@@ -8,26 +8,34 @@
 
 1. Clone / Download this repository.
 
-2. Open Terminal / Command Prompt at the project's root directory and type:
+2. Open Terminal / Command Prompt at the **project's root directory** and type:
+
     ```
     docker-compose build --no-cache
     ```
-
-    - Running **`TCPServer`** and **`TCPClient`** in separate terminals with real-time outputs and input:
     
-        Starting **`TCPServer`** 
+    Project's root directory is the folder that contains the `docker-compose.yaml`, `README.md`, `.gitignore` files and `TCPClient` and `TCPServer` folders.
+
+    - Running **`Server`** and **`Client`** in separate terminals with real-time outputs and input:
+    
+        Starting **`Server`** 
+        
+        Use **previously opened** Terminal / Command Prompt and type:
         ```
         docker compose up tcp-server --no-build
         ```
 
-        Starting **`TCPClient`** 
+        Starting **`Client`** 
         
-        Open another Terminal / Command Prompt at the project's root directory and type:
+        Open another Terminal / Command Prompt at the **project's root directory** and type:
         ```
         docker-compose run --rm tcp-client
         ```
         
-    - Running **`TCPClient`** in single terminal with real-time output and input:
+    - Running **`Client`** in single terminal with real-time output and input:
+    
+        Use **previously opened** Terminal / Command Prompt and type:
+        
         ```
         docker compose up tcp-server --detach --no-build
         docker-compose run --rm tcp-client
