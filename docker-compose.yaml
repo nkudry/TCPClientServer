@@ -1,0 +1,33 @@
+---
+version: '3'
+services:
+  tcp-server:
+    container_name: TCPServer
+    image: tcp_server
+    build: ./TCPServer
+    hostname: tcp_server
+    networks:
+      tcp_connection:
+        ipv4_address: 192.168.100.100
+    stdin_open: false # docker run -i
+    tty: false
+
+  tcp-client:
+    container_name: TCPClient
+    image: tcp_client
+    build: ./TCPClient
+    hostname: tcp_client
+    depends_on:
+      - tcp-server
+    networks:
+      tcp_connection:
+        ipv4_address: 192.168.100.99
+    stdin_open: true # docker run -i
+    tty: true
+
+networks:
+  tcp_connection:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
